@@ -5,6 +5,18 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-  title = 'ticTacToe';
+  gameStarted = false;
+  gameReset = false;
+
+  startGame() {
+    this.gameStarted = true;
+    // this.gameReset = false;
+  }
+
+  resetGame() {
+    this.gameReset = true;
+    // this.gameStarted = false;
+  }
 }
