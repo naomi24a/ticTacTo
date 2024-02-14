@@ -13,7 +13,18 @@ export class ButtonComponent {
     this.gameStarted.emit();
   }
 
-  resetGame() {
-    this.gameStarted.emit();
-  }
+  // resetGame() {
+  //   this.gameStarted.emit();
+  // }
+
+  // gameStarted = false;
+  // gameReset = false;
+
+  // startGame() {
+  //   this.gameStarted = true;
+  // }
+
+  // resetGame() {
+  //   this.gameReset = true;
+  // }
 }
