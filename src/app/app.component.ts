@@ -8,13 +8,8 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   gameStarted = false;
-  // gameReset = false;
-
+  
   startGame() {
     this.gameStarted = true;
   }
-
-  // resetGame() {
-  //   this.gameReset = true;
-  // }
 }
