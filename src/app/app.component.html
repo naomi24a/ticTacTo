@@ -1,4 +1,7 @@
 <h1>Tic Tac Toe</h1>
 
-<app-button (gameStarted)="startGame()"></app-button>
-<app-board [gameStarted]="gameStarted"></app-board>
+<button mat-raised-button (click)="startGame()">Play</button>
+
+<ng-container *ngIf ="gameStarted">
+    <app-board ></app-board>
+</ng-container>
