@@ -11,7 +11,7 @@ export class AppComponent {
   
   startGame() {
     this.gameStarted = true;
-    console.warn(this.gameStarted);
+    //console.warn(this.gameStarted);
     
   }
 }

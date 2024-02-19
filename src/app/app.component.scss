@@ -1,16 +1,21 @@
 h1 {
-  text-transform: uppercase;
-  font-style: normal;
-  color: white;
-  font-size: 33px;
+  font-size: 45px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+  color: rgb(60, 60, 139);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-// player:X {
-//   color: blue;
+button {
+  font-size: 25px;
+  border-radius: 15px;
+  transition: 0.3s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
-//   &:O {
-//     color: red;
-//   }
-// }
+  &:hover {
+    background-color: rgba(170, 170, 220, 0.664);
+    font-size: 28px;
+  }
+}
