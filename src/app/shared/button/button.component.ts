@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,9 +7,5 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class ButtonComponent {
-  @Output() gameStarted = new EventEmitter<void>();
 
-  startGame() {
-    this.gameStarted.emit();
-  }
 }
