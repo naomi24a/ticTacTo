@@ -1,17 +1,22 @@
 <div class="grid">
-    <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+  <!-- display the game board -->
+  <div class="row" *ngFor="let row of board; let i = index">
+    <div 
+      class="cell" *ngFor="let cell of row; let j = index" 
+      (click)="makeMove(i, j)" 
+      [ngClass]="cell === 'X' ? 'move-X' : cell === 'O' ? 'move-O' : ''">
+      {{ cell }}
+      <!-- display the symbol (X, O or none) in the cell -->
     </div>
-    <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-    </div>
-    <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-    </div>
+  </div>
 </div>
+<!-- display winner if there's a winner -->
+  <div *ngIf="checkWinner()" class="checkWinner">
+    <p>Congratulations {{ winner }} wins!</p>
+  </div>
+
+  <!-- display current player's turn -->
+  <div *ngIf="!winner && !isBoardFull()" class="turn">Turn: {{ currentPlayer }}</div>
+
+  <!-- display a message if it's a draw -->
+  <div *ngIf="isBoardFull() && !winner" class="draw">It's a draw</div>
