@@ -7,12 +7,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { BoardComponent } from './modules/board/board.component';
 import { ButtonComponent } from './shared/button/button.component';
+import { LogicComponent } from './shared/logic/logic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
-    ButtonComponent
+    ButtonComponent,
+    LogicComponent
   ],
   imports: [
     BrowserModule,

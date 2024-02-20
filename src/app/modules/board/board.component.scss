@@ -1,26 +1,42 @@
 .grid {
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    border-spacing: 5px;
-    height: 300px;
-    width: 300px;
-}
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin-top: 2cm;
+    
+    .row {
+        display: flex;
+    
+        .cell {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background: white;
+            display: table-cell;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle;
+            border: 3.5px solid rgb(170, 170, 220);
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.row {
-    display: table-row;
-}
-
-.cell {
-    width: 50px;
-    height: 50px;
-    background: white;
-    display: table-cell;
-    cursor: pointer;
-
-    &:hover {
-        transition: 0.5s;
-        background-color: rgb(83, 83, 168);
+            &:hover {
+                transition: 0.5s;
+                background-color: rgb(83, 83, 168);
+            }
+        }
     }
+}
+
+.move-X, .move-O {
+    color: rgba(83, 83, 168, 0.555);
+    font-size: 100px;
+}
+
+.winner, .turn, .draw, .checkWinner {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
