@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+//define enum Player
 enum Player {
   None = '', //default
   X = 'X',
@@ -13,6 +14,7 @@ enum Player {
 })
 
 export class BoardComponent {
+
   currentPlayer: Player = Player.X; //Player X starts
   winner: Player = Player.None; //1. winner is Player.None
   //initialize 3x3 empty board using None in all cells
@@ -28,8 +30,9 @@ export class BoardComponent {
       this.board[row][col] = this.currentPlayer;
       if (this.checkWinner()) {
         return true;
+      } else {
+        this.switchPlayer();
       }
-      this.currentPlayer = this.currentPlayer === Player.X ? Player.O : Player.X;
     }
     return false;
   }

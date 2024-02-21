@@ -7,11 +7,10 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  public gameStarted?: boolean;
+
+  gameStarted: boolean = false;
   
   startGame() {
-    this.gameStarted = true;
-    //console.warn(this.gameStarted);
-    
+    this.gameStarted = !this.gameStarted;
   }
 }

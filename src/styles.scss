@@ -1,12 +1,9 @@
-// @import 'tailwindcss/base';
-// @import 'tailwindcss/components';
-// @import 'tailwindcss/utilities';
-
 body {
     background-color: rgba(170, 170, 220);
-    margin-top: 50px;
 }
 
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
