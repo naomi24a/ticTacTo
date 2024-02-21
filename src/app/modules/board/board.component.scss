@@ -2,7 +2,7 @@
     display: grid;
     place-items: center;
     position: relative;
-    margin-top: 2cm;
+    margin-top: 1cm;
     
     .row {
         display: flex;
@@ -12,7 +12,6 @@
             height: 100px;
             position: relative;
             background: white;
-            display: table-cell;
             cursor: pointer;
             text-align: center;
             vertical-align: middle;
@@ -20,9 +19,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.5;
 
             &:hover {
-                transition: 0.5s;
                 background-color: rgba(170, 170, 220);
             }
         }
@@ -39,4 +38,13 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+
+.pop-up {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border-radius: 5px;
 }
