@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { MatDialog } from '@angular/material/dialog';
 
 //define enum Player
 enum Player {
@@ -17,6 +18,7 @@ export class BoardComponent {
 
   currentPlayer: Player = Player.X; //Player X starts
   winner: Player = Player.None; //1. winner is Player.None
+  warningMessage: string | null = null;
   //initialize 3x3 empty board using None in all cells
   board: Player[][] = [
     [Player.None, Player.None, Player.None],
@@ -25,16 +27,23 @@ export class BoardComponent {
   ];
 
   //method to make a move by the current player
-  makeMove(row: number, col: number): boolean {
-    if (!this.board[row][col] && this.winner === Player.None) {
+  makeMove(row: number, col: number): void {
+    if (this.winner !== Player.None) {
+      return;
+    }
+
+    if (this.board[row][col] === Player.None) {
       this.board[row][col] = this.currentPlayer;
       if (this.checkWinner()) {
-        return true;
-      } else {
-        this.switchPlayer();
+        return;
       }
+      this.switchPlayer();
+    } else {
+      this.warningMessage = "The cell is already taken!";
+      setTimeout(() => {
+        this.warningMessage = null;
+      }, 1000);
     }
-    return false;
   }
 
   //methode to check the winner
