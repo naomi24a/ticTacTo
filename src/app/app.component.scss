@@ -1,13 +1,20 @@
 h1 {
-  font-size: 45px;
+  background-color: white;
+  text-shadow: 3px 3px 4px rgb(170, 170, 220);
+  padding: 70px;
+  box-shadow: 10px 5px 5px rgba(117, 117, 117, 0.217);
+  font-size: 50px;
   text-align: center;
-  margin: 1cm;
+  margin-top: -1cm;
+  margin-bottom: -0.5cm;
+  margin-left: -0.5cm;
+  margin-right: -0.2cm;
   color: rgb(60, 60, 139);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 button {
-  font-size: 25px;
+  font-size: 30px;
   border-radius: 15px;
   transition: 0.3s;
   display: block;
@@ -15,7 +22,7 @@ button {
   margin-right: auto;
 
   &:hover {
-    background-color: rgba(170, 170, 220, 0.664);
-    font-size: 28px;
+    background-color: rgb(170, 170, 220);
+    font-size: 32px;
   }
 }

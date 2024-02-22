@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { MatDialog } from '@angular/material/dialog';
 
 //define enum Player
 enum Player {
@@ -15,7 +14,7 @@ enum Player {
 })
 
 export class BoardComponent {
-
+  gameStarted: boolean = false;
   currentPlayer: Player = Player.X; //Player X starts
   winner: Player = Player.None; //1. winner is Player.None
   warningMessage: string | null = null;
@@ -112,5 +111,20 @@ export class BoardComponent {
     if (this.winner === Player.None) {
       this.currentPlayer = this.currentPlayer === Player.X ? Player.O : Player.X;
     }
+  }
+  
+  startGame() {
+    this.gameStarted = true;
+  }
+
+  resetGame() {
+    this.gameStarted = false;
+    this.currentPlayer = Player.X;
+    this.winner = Player.None;
+    this.board = [
+      [Player.None, Player.None, Player.None],
+      [Player.None, Player.None, Player.None],
+      [Player.None, Player.None, Player.None]
+    ];    
   }
 }
