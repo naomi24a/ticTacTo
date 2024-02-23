@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 //define enum Player
 enum Player {
@@ -27,7 +27,11 @@ export class BoardComponent {
 
   //method to make a move by the current player
   makeMove(row: number, col: number): void {
-    if (this.winner !== Player.None) {
+    if (this.winner !== Player.None || this.isBoardFull()) {
+        this.warningMessage = "The game is over! Press play again.";
+        setTimeout(() => {
+          this.warningMessage = null;
+        }, 1000);
       return;
     }
 
@@ -90,7 +94,6 @@ export class BoardComponent {
       this.winner = this.board[0][2];
       return true;
     }
-
     return false;
   }
 
@@ -112,19 +115,15 @@ export class BoardComponent {
       this.currentPlayer = this.currentPlayer === Player.X ? Player.O : Player.X;
     }
   }
-  
-  startGame() {
-    this.gameStarted = true;
-  }
 
-  resetGame() {
-    this.gameStarted = false;
+  resetBoard(): void {
     this.currentPlayer = Player.X;
     this.winner = Player.None;
+    this.warningMessage = null;
     this.board = [
       [Player.None, Player.None, Player.None],
       [Player.None, Player.None, Player.None],
       [Player.None, Player.None, Player.None]
-    ];    
+    ];
   }
 }

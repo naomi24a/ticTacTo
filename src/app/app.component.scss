@@ -1,8 +1,8 @@
 h1 {
-  background-color: white;
-  text-shadow: 3px 3px 4px rgb(170, 170, 220);
+  text-shadow: 3px 3px 4px rgba(83, 83, 168, 0.527);
   padding: 70px;
-  box-shadow: 10px 5px 5px rgba(117, 117, 117, 0.217);
+  // box-shadow: 10px 5px 5px rgba(126, 126, 128, 0.603);
+  box-shadow: 10px 10px 19px rgba(83, 83, 168, 0.527);
   font-size: 50px;
   text-align: center;
   margin-top: -1cm;
@@ -11,11 +11,14 @@ h1 {
   margin-right: -0.2cm;
   color: rgb(60, 60, 139);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 6px;
 }
 
 button {
   font-size: 30px;
+  letter-spacing: 4px;
   border-radius: 15px;
+  box-shadow: 10px 10px 19px rgba(83, 83, 168, 0.527);
   transition: 0.3s;
   display: block;
   margin-left: auto;
@@ -23,6 +26,8 @@ button {
 
   &:hover {
     background-color: rgb(170, 170, 220);
+    box-shadow: 10px 10px 19px rgba(83, 83, 168, 0.527);
     font-size: 32px;
+    letter-spacing: 6px;
   }
 }
