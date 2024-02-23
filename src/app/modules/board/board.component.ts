@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
+//define enum Player
 enum Player {
   None = '', //default
   X = 'X',
@@ -13,8 +14,10 @@ enum Player {
 })
 
 export class BoardComponent {
+  gameStarted: boolean = false;
   currentPlayer: Player = Player.X; //Player X starts
   winner: Player = Player.None; //1. winner is Player.None
+  warningMessage: string | null = null;
   //initialize 3x3 empty board using None in all cells
   board: Player[][] = [
     [Player.None, Player.None, Player.None],
@@ -23,15 +26,27 @@ export class BoardComponent {
   ];
 
   //method to make a move by the current player
-  makeMove(row: number, col: number): boolean {
-    if (!this.board[row][col] && this.winner === Player.None) {
+  makeMove(row: number, col: number): void {
+    if (this.winner !== Player.None || this.isBoardFull()) {
+        this.warningMessage = "The game is over! Press play again.";
+        setTimeout(() => {
+          this.warningMessage = null;
+        }, 1000);
+      return;
+    }
+
+    if (this.board[row][col] === Player.None) {
       this.board[row][col] = this.currentPlayer;
       if (this.checkWinner()) {
-        return true;
+        return;
       }
-      this.currentPlayer = this.currentPlayer === Player.X ? Player.O : Player.X;
+      this.switchPlayer();
+    } else {
+      this.warningMessage = "The cell is already taken!";
+      setTimeout(() => {
+        this.warningMessage = null;
+      }, 1000);
     }
-    return false;
   }
 
   //methode to check the winner
@@ -79,7 +94,6 @@ export class BoardComponent {
       this.winner = this.board[0][2];
       return true;
     }
-
     return false;
   }
 
@@ -100,5 +114,16 @@ export class BoardComponent {
     if (this.winner === Player.None) {
       this.currentPlayer = this.currentPlayer === Player.X ? Player.O : Player.X;
     }
+  }
+
+  resetBoard(): void {
+    this.currentPlayer = Player.X;
+    this.winner = Player.None;
+    this.warningMessage = null;
+    this.board = [
+      [Player.None, Player.None, Player.None],
+      [Player.None, Player.None, Player.None],
+      [Player.None, Player.None, Player.None]
+    ];
   }
 }

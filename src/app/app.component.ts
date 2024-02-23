@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { BoardComponent } from './modules/board/board.component';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,17 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-
+  title = 'Tic Tac Toe';
   gameStarted: boolean = false;
-  
+
+  @ViewChild(BoardComponent) boardComponent!: BoardComponent;
+
   startGame() {
-    this.gameStarted = !this.gameStarted;
+    this.gameStarted = true;
+  }
+
+  resetGame() {
+    this.gameStarted = true;
+    this.boardComponent.resetBoard();
   }
 }

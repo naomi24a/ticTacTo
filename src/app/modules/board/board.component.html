@@ -3,20 +3,40 @@
   <div class="row" *ngFor="let row of board; let i = index">
     <div 
       class="cell" *ngFor="let cell of row; let j = index" 
-      (click)="makeMove(i, j)" 
+      (click)="makeMove(i, j)"
       [ngClass]="cell === 'X' ? 'move-X' : cell === 'O' ? 'move-O' : ''">
       {{ cell }}
       <!-- display the symbol (X, O or none) in the cell -->
     </div>
   </div>
 </div>
+
+<!-- display current player's turn -->
+<div
+  *ngIf="!winner && !isBoardFull()" class="turn">
+  <p>Turn: {{ currentPlayer }}</p>
+</div>
+
 <!-- display winner if there's a winner -->
-  <div *ngIf="checkWinner()" class="checkWinner">
-    <p>Congratulations {{ winner }} wins!</p>
+<div *ngIf="checkWinner()">
+  <div class="game-over-popup">
+    <p>Game Over!</p>
+    <p>Congratulations {{ winner }} wins</p>
+    <button mat-raised-button class="button-reset" (click)="resetBoard()">Play Again</button>
   </div>
+</div>
 
-  <!-- display current player's turn -->
-  <div *ngIf="!winner && !isBoardFull()" class="turn">Turn: {{ currentPlayer }}</div>
+<!-- display a message if it's a draw -->
+<div *ngIf="isBoardFull() && !winner">
+  <div class="game-over-popup">
+    <p>Game Over!</p>
+    <p>It's a draw. Nobody wins!</p>
+    <button mat-raised-button class="button-reset" (click)="resetBoard()">Play again</button>
+  </div>
+</div>
 
-  <!-- display a message if it's a draw -->
-  <div *ngIf="isBoardFull() && !winner" class="draw">It's a draw</div>
+<!-- display a message if cell is already used -->
+<div
+  *ngIf="warningMessage" class="warning" style="letter-spacing: 1px;">
+  <p>{{ warningMessage }}</p>
+</div>

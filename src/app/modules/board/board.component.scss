@@ -2,41 +2,79 @@
     display: grid;
     place-items: center;
     position: relative;
-    margin-top: 2cm;
+    margin-top: 1cm;
+    border-radius: 20px;
     
     .row {
         display: flex;
-    
+        border-radius: 20px;
+
         .cell {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             position: relative;
-            background: white;
-            display: table-cell;
+            background: rgb(255, 255, 255);
             cursor: pointer;
             text-align: center;
             vertical-align: middle;
             border: 3.5px solid rgb(170, 170, 220);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.5;
+            box-shadow: 1px 1px 10px 10px rgba(117, 117, 117, 0.217);
 
             &:hover {
-                transition: 0.5s;
-                background-color: rgba(170, 170, 220);
+                background-color: rgb(170, 170, 220);
             }
         }
     }
 }
 
 .move-X, .move-O {
-    color: rgba(83, 83, 168, 0.555);
+    color: rgba(83, 83, 168, 0.820);
     font-size: 100px;
+    text-shadow: 3px 3px 3px rgb(170, 170, 220);
 }
 
-.winner, .turn, .draw, .checkWinner {
+.turn {
+    color: rgb(83, 83, 168);
     text-align: center;
+    margin-top: 25px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.warning {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
+    color: red;
+    background-position: center;
+    letter-spacing: 1px;
+}
+
+.game-over-popup {
+    position: absolute;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-top: -190px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.733);
+    letter-spacing: 1px;
+}
+
+.button-reset {
     margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0.5px 0.5px 5px rgba(43, 41, 41, 0.699);
+    &:hover {
+        background-color: rgba(170, 170, 220, 0.400);
+    }
 }

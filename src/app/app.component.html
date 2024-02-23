@@ -1,8 +1,7 @@
-<h1>Tic Tac Toe</h1>
+<h1>{{ title }}</h1>
 
-<button mat-raised-button style="color: rgb(60, 60, 139)" (click)="startGame()">
-    {{gameStarted ? 'Reset' : 'Play'}}</button>
+<button mat-raised-button class="button" style="color: rgb(60, 60, 139)" (click)="gameStarted ? resetGame() : startGame()">
+    {{ gameStarted ? 'Play again' : 'Play' }}
+</button>
 
-<ng-container *ngIf="gameStarted">
-    <app-board ></app-board>
-</ng-container>
+<app-board *ngIf="gameStarted"></app-board>
