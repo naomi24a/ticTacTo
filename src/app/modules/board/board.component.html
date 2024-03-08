@@ -1,42 +1,49 @@
-<div class="grid">
+<div class="relative grid justify-center rounded-3xl mt-10 w-full">
   <!-- display the game board -->
-  <div class="row" *ngFor="let row of board; let i = index">
+  <div class="flex rounded-3xl" *ngFor="let row of board; let i = index">
     <div 
-      class="cell" *ngFor="let cell of row; let j = index" 
-      (click)="makeMove(i, j)"
-      [ngClass]="cell === 'X' ? 'move-X' : cell === 'O' ? 'move-O' : ''">
-      {{ cell }}
-      <!-- display the symbol (X, O or none) in the cell -->
+      class="center bg-white w-32 h-32 text-center relative cursor-pointer border-lavander border-2 border-opacity-100 rounded-2xl shadow-lg shadow-gray-500 hover:bg-lavander" *ngFor="let cell of row; let j = index" 
+      (click)="makeMove(i, j)">
+      <span
+        class="inline-flex items-center justify-center w-full h-full">
+        <span
+          class="text-8xl text-center"
+          [ngClass]="{
+            'text-lavander': cell === 'X' || cell === 'O',
+            'font-bold': cell === 'X' || cell === 'O'
+          }">
+          {{ cell }}
+        </span>
+      </span>
     </div>
   </div>
 </div>
 
 <!-- display current player's turn -->
 <div
-  *ngIf="!winner && !isBoardFull()" class="turn">
+  *ngIf="!winner && !isBoardFull()" class="text-purple-950 text-center mt-5 text-xl tracking-wide">
   <p>Turn: {{ currentPlayer }}</p>
 </div>
 
-<!-- display winner if there's a winner -->
-<div *ngIf="checkWinner()">
-  <div class="game-over-popup">
-    <p>Game Over!</p>
-    <p>Congratulations {{ winner }} wins</p>
-    <button mat-raised-button class="button-reset" (click)="resetBoard()">Play Again</button>
-  </div>
-</div>
-
-<!-- display a message if it's a draw -->
-<div *ngIf="isBoardFull() && !winner">
-  <div class="game-over-popup">
-    <p>Game Over!</p>
-    <p>It's a draw. Nobody wins!</p>
-    <button mat-raised-button class="button-reset" (click)="resetBoard()">Play again</button>
+<div *ngIf="checkWinner() || isBoardFull()">
+  <div class="justify-center flex overflow-x-auto w-full absolute top-0 left-0 mt-80 items-center">
+    <div class="font-franklin text-xl px-4 py-4 bg-white rounded-xl border-2 border-black border-opacity-10 tracking-wide">
+      <p>Game Over!</p>
+      <!-- message if there's a winner -->
+      <div *ngIf="checkWinner()">
+        <p>Congratulations {{ winner }} wins</p>
+      </div>
+      <!-- message if it's a draw -->
+      <div *ngIf="isBoardFull() && !winner">
+        <p>It's a draw. Nobody wins!</p>
+      </div>
+      <button class="bg-white rounded-md text-center justify-center px-2 py-2 mt-4 tracking-wide shadow-sm shadow-gray-500 hover:bg-lavander" (click)="resetBoard()">Play Again</button>
+    </div>
   </div>
 </div>
 
 <!-- display a message if cell is already used -->
 <div
-  *ngIf="warningMessage" class="warning" style="letter-spacing: 1px;">
+  *ngIf="warningMessage" class="font-franklin center text-xl text-red-600 mt-4 text-center tracking-wide">
   <p>{{ warningMessage }}</p>
 </div>
